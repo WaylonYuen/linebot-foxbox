@@ -1,3 +1,4 @@
+# ====== 套件 & SDK ======
 from flask import Flask, request, abort
 
 from linebot import (
@@ -8,24 +9,22 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-
-# ======這裡是呼叫的檔案內容=====
-from Functions.MsgTemplate import *
-
-
-# ======python的函數庫==========
+# ====== Python ======
 import os
 import tempfile
 import datetime
 import time
 
+# ====== local ======
+from Functions.MsgTemplate import *
+
 
 app = Flask(__name__)
-static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
+static_tmp_path = os.path.join(os.path.dirname(__file__), 'Static', 'tmp')
 # Channel Access Token
-line_bot_api = LineBotApi('你的Channel AcessToken')
+line_bot_api = LineBotApi('你的 Channel AccessToken')
 # Channel Secret
-handler = WebhookHandler('你的Channel Secret')
+handler = WebhookHandler('你的 Channel Secret')
 
 
 # 監聽所有來自 /callback 的 Post Request
@@ -83,6 +82,7 @@ def welcome(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 
+# 主程式 Main program
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
