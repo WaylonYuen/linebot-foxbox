@@ -16,15 +16,16 @@ import datetime
 import time
 
 # ====== local ======
+from Static.NonPublicise import *
 from Functions.MsgTemplate import *
 
 
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'Static', 'tmp')
 # Channel Access Token
-line_bot_api = LineBotApi('你的 Channel AccessToken')
+line_bot_api = LineBotApi(Channel_Access_Token)
 # Channel Secret
-handler = WebhookHandler('你的 Channel Secret')
+handler = WebhookHandler(Channel_Secret)
 
 
 # 監聽所有來自 /callback 的 Post Request
